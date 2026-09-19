@@ -1,5 +1,7 @@
 # Portable AI Rules
 
+> A portable version of an AI coding-assistant rule system: short-entry injection + on-demand contract routing, not one giant prompt. `kernel/` holds verbatim rule snapshots, `distilled/` holds sanitized mechanism rewrites, `LOADER.md` explains the model and reading order. Docs are in Chinese; kernel rule files are in English.
+
 一套 AI 编码助手规则体系的可移植版本：面向**没有源仓访问权限**的使用者。
 
 它不是一份"提示词大全"，而是一套**按需加载的规则架构**——短入口注入基线，任务信号决定再加载哪些契约。本目录同时包含这套架构的脱敏说明和可直接采用的核心规则原文。

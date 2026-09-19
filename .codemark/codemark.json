@@ -1,0 +1,15 @@
+{
+    "nodes": {
+        "root": {
+            "type": "group",
+            "uuid": "root",
+            "name": "CodeMarks"
+        }
+    },
+    "children": {
+        "root": []
+    },
+    "roots": [
+        "root"
+    ]
+}

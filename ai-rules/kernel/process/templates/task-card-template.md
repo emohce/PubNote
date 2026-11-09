@@ -1,6 +1,11 @@
 # Task Card
 
-> Standard non-requirement work only. Standard requirement work uses `raw-requirement.md + spec.md` from the dedicated template.
+关键词：任务目标、处理结果、核验依据、接续入口
+
+正式文档按[关键词通则](../rules.md#document-keywords)从本篇正文重新提取；拆成多篇时各篇自有摘要。
+
+> Legacy layout remains supported. New role-based tasks use [task-roles-template](task-roles-template.md); declared role mappings take precedence over filename/count guidance in this template.
+> 本模板用于 Standard 非需求任务。需求增量默认用[三职责模板](task-roles-template.md)；已有 `raw-requirement.md + spec.md` 继续按旧布局维护。
 
 Tool:
 Date:

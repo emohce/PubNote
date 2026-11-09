@@ -24,6 +24,16 @@ Apply this layer when a task touches:
 
 ## 3. Security Gates
 
+### Privacy Before Observation
+
+- This is a mandatory global gate for every task, project, host and tool, even when content has no sensitive marker. Protect secrets and all private information, including credentials, passwords, tokens, private keys, recovery codes, personal/contact/identity data, private conversations and financial or payment details.
+- Before observation, choose the minimum task-relevant information and a surface that excludes unnecessary private content. The gate covers files, API responses, logs, exports, browser/DOM content, accessibility trees, screenshots, clipboard reads and delegated observations. Never retrieve a sensitive body first and redact, mask, crop or suppress its output afterward; later masking does not authorize the original read.
+- Existing login, tool/filesystem access, and authorization to configure an account or service do not authorize inspecting its secrets or unrelated private information. Read private content only when genuinely necessary for the requested result and the user's explicit instruction covers that content and minimum scope. Preserve stricter sensitive/quarantined-file gates below. Necessary non-secret task metadata may be read within the authorized scope without another confirmation.
+- For authentication, configuration and connectivity checks, use existing sessions, masked/status-only views, permission metadata and actual connection or validation results. Do not open credential details, reveal fields, read stored keys or copy secrets merely to identify an account or test a connection. Let the user enter secrets directly, or use an authorized secret-safe facility that does not return their value to the agent.
+- If a surface is likely to reveal private content, do not observe it; choose a safe scoped view or hand the sensitive step to the user. If private content appears unexpectedly, stop further inspection and propagation. Close or leave the surface only through a known safe action that requires no further sensitive read; otherwise ask the user to close it. Never reproduce or persist the exposed content in chat, rules, memory, receipts or artifacts.
+
+### Other Security Gates
+
 - Validate tool necessity, scope, permission, input origin, output destination, and rollback path before use.
 - Never expose secrets in Markdown, logs, prompts, screenshots, eval records, or generated examples.
 - A file the repository explicitly marks as sensitive or quarantined is read-gated, not only write-gated. An explicit marker is a filename suffix, sibling README declaration, front-matter flag, or ignore-file annotation naming the file as sensitive, quarantined, or holding credentials/keys/2FA seeds.
@@ -33,7 +43,7 @@ Apply this layer when a task touches:
 - In-scope delete/overwrite/move may proceed without a second prompt only when every affected item is byte-and-mode exact against the nearest Git owner's raw `HEAD` or stage-0 index blob. Untracked, dirty, conflicted, special-file and unknown states require confirmation; recoverability never expands task scope.
 - Process stop/restart, shutdown, remote Git writes, publish/deploy and external messages/writes may proceed when the current request explicitly names the action, or its one clear result necessarily includes it, and target and impact are clear. Agent-added or expanded actions require confirmation first.
 - Payment, approval, credential rotation/change and permission mutation always require a separate action-time confirmation. DB/SQL mutation has the stricter hard gate below: agents do not execute it directly.
-- SQL hard gate: agents may directly execute only read-only query SQL, such as `SELECT`, `SHOW`, `DESCRIBE`, `EXPLAIN`, or metadata inspection, and only when the statement has no mutation side effects. Agents must not directly execute `INSERT`, `UPDATE`, `DELETE`, `MERGE`, `UPSERT`, `REPLACE`, `ALTER`, `DROP`, `TRUNCATE`, `CREATE`, `RENAME`, `GRANT`, `REVOKE`, `CALL`, `EXEC`, stored procedures, jobs, migration runners, batch scripts, or any data/schema/permission mutation. Non-query SQL belongs in the project AI-DB task `sql.md` package for user/DBA execution.
+- SQL hard gate: agents may directly execute only read-only query SQL, such as `SELECT`, `SHOW`, `DESCRIBE`, `EXPLAIN`, or metadata inspection, and only when the statement has no mutation side effects. Agents must not directly execute `INSERT`, `UPDATE`, `DELETE`, `MERGE`, `UPSERT`, `REPLACE`, `ALTER`, `DROP`, `TRUNCATE`, `CREATE`, `RENAME`, `GRANT`, `REVOKE`, `CALL`, `EXEC`, stored procedures, jobs, migration runners, batch scripts, or any data/schema/permission mutation. Non-query SQL is handed to the user or DBA in the project AI-DB task. Executable DDL is a `.sql` file with `-- <++>` segments; `sql.md` records status and results and is not the only copy of that script.
 - Use read-only queries and dry-run modes for evidence. Mutation plans remain documentation-only until a human executes them outside the agent.
 - Prefer allowlists for commands, paths, domains, APIs, and DB targets in automation scripts.
 

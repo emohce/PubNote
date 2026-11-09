@@ -1,5 +1,10 @@
 # Changes：<任务名> 变更清单
 
+关键词：变更清单、文件职责、实施范围
+
+正式文档按[关键词通则](../rules.md#document-keywords)从本篇正文重新提取；拆成多篇时各篇自有摘要。
+
+> Legacy layout remains supported. New role-based tasks use [task-roles-template](task-roles-template.md); declared role mappings take precedence over filename/count guidance in this template.
 > Inventory only. Judgement lives in `tasks.md`, evidence in `verify.md`, plan in `plan.md`; this file answers
 > **which files changed and what each change was**, and links to the others rather than restating them.
 > **Every list row carries a core-description cell** — a bare path list still forces the reader to open each file.

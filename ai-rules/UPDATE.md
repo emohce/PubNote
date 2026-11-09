@@ -2,6 +2,19 @@
 
 ## 源仓侧（维护者）
 
+## 2026-11-09.2
+
+- 补完此前只更新哈希的蒸馏：`model`、`guards`、`memory`、`ops-db`、`skills`、`adapters`、`skeleton`。
+- 任务分级、SQL 交接、发布阶梯、Skill 工序复用和浏览器默认与当天母版对齐。
+
+## 2026-11-09.1
+
+- `kernel/` 按当天母版重拷。
+- `distilled/process.md` 改为现行任务分级：Standard 需求默认一份 `spec.md`，Controlled 默认 `spec.md / delivery.md / history.md`。
+- `distilled/ui.md` 写明外部浏览器默认 Eagle Light / ego lite。
+- `SOURCES.md` 的 sha256 前 8 位已按当天源文件重算。
+
+
 分发通道：**PubNote 仓库的 `ai-rules/` 目录**（`pack.py` 出的 zip 只是可选存档）。
 
 两类文件同步成本不同：

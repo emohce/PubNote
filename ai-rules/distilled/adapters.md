@@ -24,7 +24,7 @@ Adapter **绝不复述政策**——政策在共享 owner，adapter 只链接。
 
 - **configured ≠ 接受**：配置写了不代表新会话真的吃——状态如实标注，不接受的能力回退 `main-only`。
 - **能力归 launcher 不归 binary**：同一 binary 不同启动器（桌面壳、终端包装、IDE 嵌入）能力不同——这是"form 差异"，不是"unmeasured"。
-- 未登记的 form 报 `unmeasured-form`，不猜 API。
+- 未登记的 form 报 `unmeasured-form`，不猜 API。本会话缺少改名工具，只说明这次没测到，不写产品数据库，也不把别的宿主的脚本拿来冒充。
 - 兄弟 launcher 缺的 API 不等于本 form 缺。
 
 ## 3. Host-form 解析顺序

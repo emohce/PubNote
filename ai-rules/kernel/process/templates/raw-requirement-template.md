@@ -1,5 +1,9 @@
 # Raw Requirement Template
 
+关键词：原始来源、语义要点、来源保真、当前基线
+
+正式文档按[关键词通则](../rules.md#document-keywords)从本篇正文重新提取；拆成多篇时各篇自有摘要。
+
 Tool:
 Date:
 Spec:

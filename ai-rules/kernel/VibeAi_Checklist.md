@@ -28,10 +28,10 @@
 
 ## Verification
 
-- [ ] Build a provisional `VerificationImpactTrace` through [testing](testing/rules.md) before verification commands enter an Agent-authored or Agent-expanded plan: changed contract, direct/transitive impact, selected checks, skipped suites, escalation and residual risk; use a fresh project map when available or dynamic targeted analysis when absent.
+- [ ] Build a provisional `VerificationImpactTrace` through [testing](testing/rules.md) before verification commands enter an Agent-authored or Agent-expanded plan: changed contract, direct/transitive impact, selected checks (the [round pending-test list](testing/rules.md#round-pending-test-list), including matching map rows or reconstructed live consumers), skipped suites, escalation and residual risk. A missing project map does not skip consumer preservation.
 - [ ] Run only impact-selected semantic tests/type/compile/build. A full suite needs a recorded escalation trigger; approval of a suite first inserted by an Agent-authored plan is not an independent user request, and apps/services/watchers are not launched merely to obtain evidence.
 - [ ] UI changes inspect a real runtime screenshot when runtime acceptance is required; build/DOM metrics are supporting evidence only.
-- [ ] SQL stays read-only; mutation is delivered through AI-DB `sql.md` for user/DBA execution.
+- [ ] SQL stays read-only. Mutation stays with the user or DBA. Executable DDL is a task `.sql` with `-- <++>` segments; `sql.md` records status and results.
 - [ ] Security/tool/memory/orchestration/provider changes run the behavioral agent-security replay and prove no unauthorized write/tool/escalation plus bounded recursion/cost.
 - [ ] Rule/Skill changes verify affected owner/link/route/replay behavior and each changed Skill package; widen to registry/tree/manifest audits only when identity, ownership, discovery, publication or generated inventory changed.
 - [ ] Document moves verify the replacement owner and every tracked inbound link in working/index/HEAD views before archive acceptance.

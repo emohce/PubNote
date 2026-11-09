@@ -1,5 +1,7 @@
 # Communication Input And Output Governance
 
+关键词：有界检索、来源时效、关键词查询、时间区间、完整性
+
 Tool: codex
 
 > Purpose: improve precision while reducing model-visible input, commentary, and final-response noise. This module is cold-loaded when a task has long/heterogeneous input, requirement intake, repeated clarification, or explicit communication-governance work.
@@ -79,6 +81,8 @@ Confirmation timing is proportional: a candidate that changes the current design
 
 Requirement-bearing work uses the [Requirement Change Review](requirement-versioning.md#51-requirement-change-review-and-conflict-scan) as its decision surface. Before canonical merge or affected design/rule writes, visibly summarize added/changed/removed/superseded/conflicting facts, affected owners, scan result and `decision_status`. An explicit choice in the current request records `decision_status=explicit-current-request` and is not reconfirmed; unresolved alternatives produce `missing-user-choice`, keep the current accepted projection unchanged and ask only the smallest mutually exclusive question.
 
+既有逻辑变更的提示时机、单项确认卡和精确授权范围，统一按[醒目单项确认](../engineering/rules.md#established-logic-confirmation)执行；不得汇入批量建议或收尾提醒后视为已获确认。
+
 ### 4.1 Task Outcome And Evidence Stop Contract
 
 Apply the sole [Task Outcome And Evidence Stop](task-outcome-and-evidence-stop.md#L1) owner. This heading is a link-only stub for anchor compatibility and must not restate the algorithm.
@@ -92,7 +96,7 @@ Apply the sole [Task Outcome And Evidence Stop](task-outcome-and-evidence-stop.m
 - Process stop/restart, shutdown, `git push`, publish/deploy and general external writes may run without another prompt only when user intent, target and impact are clear. If the Agent proposes the action because it might help, confirm first.
 - Authorization is limited to the current task, action, target and impact. Necessary retries for the same result may reuse it; task completion, a changed goal/target or broader impact ends it.
 - A short reply such as a number, a number+letter compound, “yes” or “confirm” authorizes execution only when the immediately preceding option names the action, target and impact and states `选择即执行 / confirmation executes immediately`. Otherwise it selects a preview or enters the confirmation route.
-- Payment, approval and credential/permission changes always require a separate action-time confirmation even after an exact preview. SQL/DB mutation remains prohibited for direct Agent execution and is delivered only through the AI-DB `sql.md` route.
+- Payment, approval and credential/permission changes always require a separate action-time confirmation even after an exact preview. SQL/DB mutation remains prohibited for direct Agent execution. Executable DDL is a task `.sql` file with `-- <++>` segments; `sql.md` records the handoff.
 
 ## 5. Local-First Selection And Expansion
 
@@ -119,6 +123,17 @@ WorkingBrief
 - Do not inject history, memory, Skill bodies, attachments, or retrieved chunks without reliable expected gain.
 - Expand when a protected anchor is missing, sources conflict, cross-file multi-hop matters, sequence is material, recall is low, high risk exists, or compressed/original conclusions disagree.
 - Preserve source authority, temporal order, and causal order in metadata. Attention-oriented placement cannot change authority or reorder causal logs/diffs incorrectly.
+
+<a id="structured-asset-retrieval"></a>
+### 5.1 Structured Asset Retrieval
+
+Apply to task-relevant JSON/JSONL and database-backed assets, including rules and Skills. This section owns model-visible retrieval; [engineering](../engineering/rules.md#structured-data-storage) owns storage selection.
+
+- Start with authorized metadata, schema/shape and a bounded summary; request only the IDs, paths, fields, relations and record ranges needed for the question. Reuse a query interface when present; otherwise use a scoped structural parser. Do not default to dumping a large file or use text truncation as record selection.
+- For filtered or paged results, report source identity/version or digest, schema, selection, returned count and completeness; include total matches when known, otherwise mark them unknown. Declare a stable order, the row/byte bound and a continuation cursor or range when more results remain. Choose bounds for the task, not a universal top-k that silently omits relevant records.
+- 对事件/版本型留痕，接口按实际需要支持稳定 ID、关键词及别名、时间区间、对象和当前/历史状态的组合定位；说明所查时间字段、时区、区间边界与排序。结果带梗概和权威明细定位；无匹配、未知、陈旧及未覆盖范围分开表达。中文短词、标识符和关键词表须有样例核验，不能把全文索引存在当作检索正确。
+- Treat summaries and indexes as navigation. Load the selected authoritative rule/Skill content and decisive source fields before applying or verifying them. A page, matching digest or successful query proves neither full source loading nor complete acceptance; expand through the resolved required scope when the question demands it.
+- Apply privacy and scope limits before retrieval or indexing. A stale or unavailable index follows the [source/freshness contract](documentation-impact.md#structured-asset-projections); never silently present incomplete or stale results as current and complete.
 
 ## 6. Active Context And Stable Prefix Hygiene
 

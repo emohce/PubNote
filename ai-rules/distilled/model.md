@@ -11,10 +11,10 @@
   │  只做指针：注入 4 项，不复述政策
   ▼
 always-once 基线（每个任务一次，续作复用）
+  ├─ router：kernel/routing/README.md # 选哪些 owner
   ├─ core：kernel/VibeAi.md          # 优先级/权限/边界/SQL 门禁
-  ├─ router：kernel/routing/README.md # 何时加载什么
-  ├─ host adapter：distilled/adapters.md 模式    # 宿主加载源 + 能力清单
   └─ project entry：仓内 AGENTS.md → 项目 rules   # 路径映射 + 项目门禁
+宿主适配只报告本机怎么载、会不会改名，不构成第四份政策。
   ▼
 固定守卫 ×2（router 必派）
   ├─ 会话标题（distilled/guards.md §title）
@@ -65,6 +65,7 @@ always-once 基线（每个任务一次，续作复用）
 - 路由不授权动作：解析出 owner ≠ 允许执行高风险操作。
 - owner 缺失/过期/内容冲突 → 报 `blocked` 或 `doc_drift`，不猜、不静默选边。
 - 上下文指纹/内容 digest 只证明"源快照身份"，不证明模型真的加载了内容；缓存失效用内容 digest 判断，不用 mtime。
+- 可选的只读路由读取器只返回路径、大小和摘要，不授权动作。没有这个读取器时，直接读 owner。
 
 ## 6. 证据 ≠ 权威
 

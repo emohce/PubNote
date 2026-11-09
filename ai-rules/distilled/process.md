@@ -8,10 +8,12 @@
 | --- | --- | --- |
 | Quick | 小、可控、可逆、单会话、验证路径直接 | 无任务文件；终态回复承载决策与证据 |
 | Standard 非需求 | 中等连续性或评审风险，无需求增量 | 一份 `task-card.md` |
-| Standard 需求 | 有界需求增量、无需受控恢复 | `raw-requirement.md + spec.md` |
-| Controlled | 高风险/跨仓/发布权限/DB 边界/长周期恢复/多方协调 | `spec.md / plan.md / tasks.md / verify.md / handoff.md`（带需求再加 raw） |
+| Standard 需求 | 有界需求增量、无需受控恢复 | 默认一份 `spec.md`，内含需求、交付、历史三个角色；旧的 `raw-requirement.md + spec.md` 仍有效 |
+| Controlled | 高风险/跨仓/发布权限/DB 边界/长周期恢复/多方协调 | 默认 `spec.md / delivery.md / history.md`；旧的 `plan.md / tasks.md / verify.md / handoff.md` 仍有效 |
 
 原则：文件数、可否委派、文档可用性都**不**升级任务；用能保住连续性/权威/恢复的最小级。模板在 `kernel/process/templates/`。
+
+长任务继续用原主题和主本。批次各自关闭，不把主题当成永不结束的进程，也不一次生成空目录树。
 
 补充产物：
 
@@ -39,7 +41,7 @@
 
 ## 4. 执行日志纪律
 
-- Quick 无日志；Standard 记在 task-card/spec；Controlled 用 `tasks.md`。
+- Quick 无日志；Standard 记在 task-card 或 spec；Controlled 记在交付日志，旧的 `tasks.md` 仍有效。
 - 只记**改变执行的事件**：分派、用户纠正、中断、失败、回退、reported/accepted/rejected/superseded。不记常规搜索、prompt、转录、原始输出、命令、密钥、隐藏推理。
 - 效率/Token 证据：有可比基线才记；无计数器写 `usage unavailable`；不从模型名推断节省、不为了指标重跑。
 

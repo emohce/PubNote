@@ -51,10 +51,11 @@ Other guards and details are conditional; omit empty modules.
 [ ] 有遗留文档/DB/跨仓/发布门/Controlled 工作时建 documentation.md
 [ ] 可复用知识进 vibe/knowledge/（或声明的 canonical 源）
 [ ] 任务文档用最小足够级：Quick 无文件 / Standard 非需求 task-card /
-    Standard 需求 raw+spec / Controlled 五件套
+    Standard 需求默认一份 spec.md（三角色；旧 raw+spec 仍有效） /
+    Controlled 默认 spec.md + delivery.md + history.md（旧五件套仍有效）
 [ ] 多任务/跨仓/DB/发布门/长周期 → 建 PROJECT_STATUS.md 枢纽
     （模板：kernel/starter-kit/PROJECT_STATUS-template.md）
-[ ] DB 项目才有 vibe/ai-db/；变更 SQL 走 sql.md 交付不直接执行
+[ ] DB 项目才有 vibe/ai-db/；只读查询可直接做。可执行 DDL 放任务 .sql，段首尾用 -- <++>；交接写 sql.md，不直接执行变更
 [ ] 全局入口（~/.<host>/<entry>）指向共享基线，不复述政策
 [ ] 相似/重复/恢复工作先跑 prior-task-overlap 再开新文档
 [ ] 每次实现收尾分类 document_impact；受影响 owner 同轮同步

@@ -1,5 +1,9 @@
 # Assessment Index Template
 
+关键词：复核索引、证据入口、职责边界
+
+正式文档按[关键词通则](../rules.md#document-keywords)从本篇正文重新提取；拆成多篇时各篇自有摘要。
+
 Tool: tool-neutral
 Task:
 

@@ -1,8 +1,13 @@
 # Standard Requirement Spec: <task>
 
+关键词：需求增量、实施选择、验收条件、来源追溯
+
+正式文档按[关键词通则](../rules.md#document-keywords)从本篇正文重新提取；拆成多篇时各篇自有摘要。
+
+> Legacy layout remains supported. New role-based tasks use [task-roles-template](task-roles-template.md); declared role mappings take precedence over filename/count guidance in this template.
 Tool: <tool-name>
 Date: YYYY-MM-DD
-Status: `draft | confirmed | integrated | closed-no-change | rework`
+Status: `draft | needs-confirmation | confirmed | integrated | closed-no-change | superseded`（取值由[需求状态 owner](../requirement-versioning.md#5-spec-delta-contract)维护；历史 rework 记录不批量改写）
 Documentation level: `standard requirement`
 
 Raw source: `raw-requirement.md`

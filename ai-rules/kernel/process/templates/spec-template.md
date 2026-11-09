@@ -1,6 +1,11 @@
 # Controlled Spec Template
 
-> Use only with the Controlled five-file ledger. Standard requirement work uses [standard-requirement-spec-template.md](standard-requirement-spec-template.md).
+关键词：需求基线、必要约束、验收条件、权威引用
+
+正式文档按[关键词通则](../rules.md#document-keywords)从本篇正文重新提取；拆成多篇时各篇自有摘要。
+
+> Legacy layout remains supported. New role-based tasks use [task-roles-template](task-roles-template.md); declared role mappings take precedence over filename/count guidance in this template.
+> 本模板仅用于已有 Controlled 五文件布局。新任务默认用[三职责模板](task-roles-template.md)；Standard 旧布局仍可用[兼容模板](standard-requirement-spec-template.md)。
 
 Tool:
 Date:
@@ -113,7 +118,7 @@ Use for requirement-bearing work; otherwise write `not applicable`.
 - Sole decision owner: App Root Thread
 - Allowed interactive execution surfaces: `main`, `native-thread`
 - Automation lane: `not-applicable | explicit-cli`
-- Surface-to-surface delegation: forbidden
+- Surface-to-surface delegation: authorized coordinator within grant; leaves forbidden
 - Main-owned decisions: scope, user communication, risk approval, reconciliation, final acceptance
 - Documentation synchronization owner: App Root Thread
 - Acceptance gate: affected authoritative documents synchronized and verified

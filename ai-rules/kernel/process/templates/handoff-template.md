@@ -1,5 +1,10 @@
 # Handoff Template
 
+关键词：当前状态、接续步骤、阻断事项、恢复条件
+
+正式文档按[关键词通则](../rules.md#document-keywords)从本篇正文重新提取；拆成多篇时各篇自有摘要。
+
+> Legacy layout remains supported. New role-based tasks use [task-roles-template](task-roles-template.md); declared role mappings take precedence over filename/count guidance in this template.
 Tool:
 Date:
 Task:

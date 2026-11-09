@@ -1,5 +1,10 @@
 # Tasks Template
 
+关键词：执行计划、实际进展、用户决定、剩余事项
+
+正式文档按[关键词通则](../rules.md#document-keywords)从本篇正文重新提取；拆成多篇时各篇自有摘要。
+
+> Legacy layout remains supported. New role-based tasks use [task-roles-template](task-roles-template.md); declared role mappings take precedence over filename/count guidance in this template.
 Tool:
 Date:
 Task:
